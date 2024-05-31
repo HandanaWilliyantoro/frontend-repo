@@ -1,40 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+```markdown
+# Next.js Frontend with React MUI and Redux
+
+This repository contains the frontend code for a Next.js application integrated with React MUI for UI components and Redux for state management.
+
+## Project Overview
+
+The frontend is responsible for interacting with the backend API and displaying the data to the user. It includes the following features:
+
+- Integration with backend API for updating data.
+- Redux setup for state management.
+- Displaying loading, success, and error messages.
+- Server-Side Rendering (SSR) for fetching data on the server side.
 
 ## Getting Started
 
-First, run the development server:
+To get started with this project, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Clone this repository to your local machine.
+2. Install dependencies by running `npm install`.
+3. Ensure the backend repository is running locally with Firebase Emulator.
+4. Set the Firebase Emulator API endpoint URL as an environment variable `NEXT_PUBLIC_BASE_URL` in a `.env` file.
+5. Start the development server by running `npm run dev`.
+
+## Scripts
+
+- `npm run dev`: Start the development server.
+- `npm run build`: Build the production-ready application.
+- `npm start`: Start the production server.
+- `npm run lint`: Run linting checks.
+
+## Technologies Used
+
+- **Next.js**: A React framework for building server-side rendered and static web applications.
+- **React MUI**: A React UI framework for building responsive and accessible web applications.
+- **Redux**: A predictable state container for JavaScript apps.
+- **Axios**: A promise-based HTTP client for making API requests.
+- **Formik**: A form library for React for managing form state and validation.
+- **Yup**: A JavaScript schema builder for value parsing and validation.
+---
+
+This repository is part of a full stack developer test for eBuddy PTE LTD.
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
