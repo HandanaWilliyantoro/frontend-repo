@@ -28,9 +28,9 @@ const rootReducer = createReducer(initialState, (builder) => {
       state.error = action.payload;
     })
     .addCase(updateDataReset, (state) => {
+      state.data = null
       state.loading = false;
       state.error = null;
-      state.data = null
     });
 });
 

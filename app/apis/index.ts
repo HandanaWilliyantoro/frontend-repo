@@ -1,10 +1,15 @@
 import axios from "axios"
 
+console.log(process.env.NEXT_PUBLIC_BASE_URL)
+
 const instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BASE_URL,
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+        'Access-Control-Allow-Origin': '*'
     },
 })
 
@@ -13,9 +18,9 @@ instance.interceptors.response.use(
     response => {
         // Check the status code and handle accordingly
         if (response.status === 200) {
-            console.log('Data updated successfully:', response.data);
+            console.log('API successfully called: ', response.data);
         } else {
-            console.warn('Unexpected status code:', response.status);
+            console.warn('Unexpected status code: ', response.status);
         }
         return response;
     },
