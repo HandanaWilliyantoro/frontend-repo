@@ -1,44 +1,38 @@
-"use client"
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { UserAPI } from '../../apis/userApi';
+import { createReducer } from '@reduxjs/toolkit';
+import { fetchStart, fetchSuccess, fetchFailure } from '../actions/userActions';
+import {User as UserData} from '../../entities/user'
 
-import {User} from '../../entities/user'
+interface UserData {
+    name: string;
+    email: string;
+}
 
 interface UserState {
-  data: User;
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: string | null;
+    loading: boolean;
+    error: string | null;
+    data: UserData | null;
 }
 
 const initialState: UserState = {
-  data: null,
-  status: 'idle',
-  error: null
+    loading: false,
+    error: null,
+    data: null,
 };
 
-export const fetchUser = createAsyncThunk('user/fetch', async () => {
-  const response = await UserAPI.fetchUser();
-  return response;
-});
-
-const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {},
-  extraReducers: (builder) => {
+const userReducer = createReducer(initialState, (builder) => {
     builder
-      .addCase(fetchUser.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchUser.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.data = action.payload;
-      })
-      .addCase(fetchUser.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Failed to fetch user data';
-      });
-  }
+        .addCase(fetchStart, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        .addCase(fetchSuccess, (state, action) => {
+            state.loading = false;
+            state.data = action.payload; // Here, payload is { name: string; email: string; }
+        })
+        .addCase(fetchFailure, (state, action) => {
+            state.loading = false;
+            state.error = action.payload; // Here, payload is string
+        });
 });
 
-export default userSlice.reducer;
+export default userReducer;

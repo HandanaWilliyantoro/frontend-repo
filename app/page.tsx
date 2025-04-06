@@ -1,8 +1,11 @@
 'use client';
 import { useEffect } from 'react';
 import { UserAPI } from '../apis/userApi';
+import { useRouter } from 'next/navigation';
 
 export default function MainPage() {
+
+  const router = useRouter()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +25,7 @@ export default function MainPage() {
   return (
     <div>
       <h1>User Dashboard</h1>
+      <button onClick={() => router.push('/login')}>NAVIGATE TO LOGIN</button>
     </div>
   );
 }
